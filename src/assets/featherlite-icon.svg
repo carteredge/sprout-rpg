@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="192"
+   height="192"
+   viewBox="0 0 50.800004 50.800004"
+   version="1.1"
+   id="svg7969"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="featherlite-icon.svg"
+   inkscape:export-filename="C:\Users\rezop\OneDrive\Documents\Gaming\ccrpg\character sheet\media\featherlite-icon.png"
+   inkscape:export-xdpi="256"
+   inkscape:export-ydpi="256"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7971"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-smooth-nodes="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="3.1108586"
+     inkscape:cx="77.309846"
+     inkscape:cy="162.49533"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     height="20.00033mm"
+     units="px" />
+  <defs
+     id="defs7966" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-23.786145,-29.208552)">
+    <circle
+       style="fill:#ffeecc;fill-opacity:1;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="path20728"
+       cx="49.186146"
+       cy="54.608551"
+       r="23" />
+    <path
+       id="path8052"
+       style="fill:#665544;fill-opacity:1;stroke:none;stroke-width:0.793748;stroke-linecap:round;stroke-linejoin:round"
+       d="m 25.889642,39.608304 7.143749,4.465618 h 14.001472 a 15,15 0 0 0 -1.103808,1.237135 l -17.033845,2.393651 7.695654,3.427701 6.77478,-0.951883 a 15,15 0 0 0 -0.590662,2.984314 l -10.513309,3.014547 8.097951,2.323112 2.673483,-0.76662 a 15,15 0 0 0 1.072025,3.203682 l -8.121983,3.616059 8.342126,1.173571 2.289009,-1.019317 a 15,15 0 0 0 11.08227,4.898926 15,15 0 0 0 8.378559,-2.568062 13.2,13.2 0 0 1 -4.40981,0.76817 13.2,13.2 0 0 1 -13.199971,-13.199966 13.2,13.2 0 0 1 13.199971,-13.199971 13.2,13.2 0 0 1 4.42686,0.769718 15,15 0 0 0 -8.395609,-2.570385 z" />
+  </g>
+</svg>
