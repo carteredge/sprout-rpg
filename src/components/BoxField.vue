@@ -9,7 +9,8 @@
             :class="`text-field ${inputClass}`"
             :id="name"
             :name="name"
-            :placeholder="placeholder"/>
+            :placeholder="placeholder"
+            :value="value"/>
     </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
     name: "BoxTextField",
     computed: {
         indentClass() {
-            return this.$props.indent ? `idt-${ this.$props.indent }` : "";
+            return this.indent ? `idt-${ this.indent }` : "";
         }
     },
     props: {
@@ -47,6 +48,10 @@ export default {
             type: String,
         },
         placeholder: {
+            default: "",
+            type: String,
+        },
+        value: {
             default: "",
             type: String,
         },

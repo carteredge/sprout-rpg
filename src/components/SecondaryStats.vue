@@ -31,8 +31,8 @@
             @input="onValueChange"/>
         <input
             class="other-field text-large"
-            id="maxHp"
-            name="maxHp"
+            id="max-hp"
+            name="max-hp"
             style="position: absolute; top: 69px;"
             v-model="maxHp"
             @input="onValueChange"/>
@@ -105,27 +105,44 @@ export default {
     name: "SecondaryStats",
     data() {
         return {
-            defense: this.$props.character?.defense || "",
-            hp: this.$props.character?.hp || "",
-            initiative: this.$props.character?.initiative || "",
-            injuries: this.$props.character?.injuries || [false, false, false, false, false, false],
-            maxHp: this.$props.character?.maxHp || "",
+            defense: this.character?.defense || "",
+            hp: this.character?.hp || "",
+            initiative: this.character?.initiative || "",
+            injuries: this.character?.injuries || [false, false, false, false, false, false],
+            maxHp: this.character?.maxHp || "",
         };
     },
     methods: {
         onArrayValueChange(event, name, idx, value) {
             event.stopPropagation();
-            this.$emit("array-input", name, idx, value);
+            this.$emit("array-input", { name, idx, value });
         },
+
         onValueChange(event) {
             event.stopPropagation();
             const name = event.target.name;
             const value = event.target.value;
             this.$emit("input", name, value);
         },
+
+        setData() {
+            this.defense = this.character?.defense || "";
+            this.hp = this.character?.hp || "";
+            this.initiative = this.character?.initiative || "";
+            this.injuries = this.character?.injuries || [false, false, false, false, false, false];
+            this.maxHp = this.character?.maxHp || "";
+        },
     },
     props: {
         character: Object,
+    },
+    watch: {
+        character: {
+            deep: true,
+            handler() {
+                this.setData();
+            },
+        },
     },
 }
 </script>

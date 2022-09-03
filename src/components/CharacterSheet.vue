@@ -1,8 +1,14 @@
 <template>
-    <form id="character-sheet" action="https://rpg.carteredge.dev/api/characters/" method="post">
+    <!--TODO: Replace action/method with JS call-->
+    <form
+        id="character-sheet"
+        ref="form"> <!--
+        action="https://rpg.carteredge.dev/api/characters/"
+        method="post">-->
     <!-- <form id="character-sheet" action="http://localhost:7071/api/characters/" method="post"> -->
         <div class="page-container">
             <div class="page">
+                <input type="hidden" :value="id"/>
                 <character-header
                     :character="character"
                     @input="onValueChange"></character-header>
@@ -14,7 +20,7 @@
                         <secondary-stats
                             :character="character"
                             @input="onValueChange"
-                            @array-input="onArrayValueChange"></secondary-stats>
+                            @array-input="onArrayValueChange($event.name, $event)"></secondary-stats>
                     </div>
                     <div class="col flex-4">
                         <archetype-box
@@ -24,7 +30,7 @@
                         <archetype-box
                             :character="character"
                             idx="1"
-                            @input="onValueChange"></archetype-box>
+                            @input="onArchetypeValueChange"></archetype-box>
                     </div>
                 </div>
             </div>
@@ -34,15 +40,15 @@
                         <archetype-box
                             :character="character"
                             idx="2"
-                            @input="onValueChange"></archetype-box>
+                            @input="onArchetypeValueChange"></archetype-box>
                         <div class="row">
                             <box-o-fields
                                 columns="2"
                                 id="inventory"
                                 name="item"
                                 rows="13"
-                                :character="character"
-                                @input="onArrayValueChange('items', ...$event)">
+                                :values="character.items"
+                                @input="onArrayValueChange('items', $event)">
                                 <h2>Inventory</h2>
                             </box-o-fields>
                             <box-o-fields
@@ -50,8 +56,8 @@
                                 id="notes"
                                 name="note"
                                 rows="13"
-                                :character="character"
-                                 @input="onArrayValueChange('notes', ...$event)">
+                                :values="character.notes"
+                                 @input="onArrayValueChange('notes', $event)">
                                 <h2>Notes</h2>
                             </box-o-fields>
                         </div>
@@ -78,6 +84,7 @@ export default {
         StatBox,
         SecondaryStats,
     },
+
     data() {
         return {
             character: {
@@ -107,62 +114,117 @@ export default {
                 name: "",
                 notes: [],
                 spirit: "0",
-            }
+            },
+            id: "",
         }
     },
+
     methods: {
+        mapData(rawData) {
+            for (let key of Object.keys(rawData)) {
+                if (/^archetype-\d$/.test(key)) {
+                    this.character.archetypes[/^archetype-(\d)$/.exec(key)[1]].name = rawData[key];
+                } else if (/^specialization-\d\d$/.test(key)) {
+                    const match = /^specialization-(\d)(\d)$/.exec(key);
+                    this.character.archetypes[match[1]].specializations[match[2]].name = rawData[key];
+                } else if (/^signature-\d\d\d$/.test(key)) {
+                    const match = /^signature-(\d)(\d)(\d)$/.exec(key);
+                    this.character
+                        .archetypes[match[1]]
+                        .specializations[match[2]]
+                        .signatures[match[3]].name = rawData[key];
+                } else if (/^signature-description-\d\d\d$/.test(key)) {
+                    const match = /^signature-description-(\d)(\d)(\d)$/.exec(key);
+                    this.character
+                        .archetypes[match[1]]
+                        .specializations[match[2]]
+                        .signatures[match[3]].description = rawData[key];
+                } else if (/^injury-\d$/.test(key)) {
+                    this.character.injuries[/^injury-(\d)$/.exec(key)[1]] = rawData[key];
+                } else if (/^item-\d{1,2}$/.test(key)) {
+                    this.character.items[/^item-(\d{1,2})$/.exec(key)[1]] = rawData[key];
+                } else if (/^note-\d{1,2}$/.test(key)) {
+                    this.character.notes[/^note-(\d{1,2})$/.exec(key)[1]] = rawData[key];
+                } else if (key === "max-hp") {
+                    this.character.maxHp = rawData[key];
+                } else {
+                    this.character[key] = rawData[key];
+                }
+            }
+       },
+
         onArchetypeValueChange(archetypeIndex, name, event) {
             switch (name) {
                 case "archetype":
-                    this.$data.character
+                    this.character
                     .archetypes[archetypeIndex]
                     .name = event.value;
-                    return;
+                    break;
                 case "specialization":
-                    this.$data.character
+                    this.character
                         .archetypes[archetypeIndex]
                         .specializations[event.specializationIndex]
                         .name = event.value;
-                    return;
+                    break;
                 case "signature":
-                    this.$data.character
+                    this.character
                         .archetypes[archetypeIndex]
                         .specializations[event.specializationIndex]
                         .signatures[event.signatureIndex][event.name] = event.value;
-                    return;
+                    break;
                 default:
                     return;
             }
+            this.$emit("characterChange", this.character)
         },
-        onArrayValueChange(name, idx, value) {
-            console.log(name, idx, value);
-            if (name && idx !== undefined)
-                this.$data.character[name][idx] = value ?? "";
+
+        onArrayValueChange(name, event) {
+            if (name && event.idx !== undefined)
+                this.character[name][event.idx] = event.value ?? "";
+            this.$emit("characterChange", this.character)
         },
+
         onValueChange(name, value) {
             if (name === "agility") {
-                if (this.$data.character.initiative === this.$data.character.agility ||
-                    this.$data.character.initiative === "" ||
-                    this.$data.character.initiative === undefined)
-                this.$data.character.initiative = value;
+                if (this.character.initiative === this.character.agility ||
+                    this.character.initiative === "" ||
+                    this.character.initiative === undefined)
+                this.character.initiative = value;
             }
 
             else if (name === "level") {
                 if (!isNaN(value) && (
-                    this.$data.character.maxHp === (Number(this.$data.character.level) * 5).toString() ||
-                    this.$data.character.maxHp === "" ||
-                    this.$data.character.maxHp === undefined)) {
-                        console.log(value)
-                        this.$data.character.maxHp = (Number(value) * 5).toString();
+                    this.character.maxHp === (Number(this.character.level) * 5).toString() ||
+                    this.character.maxHp === "" ||
+                    this.character.maxHp === undefined)) {
+                        this.character.maxHp = (Number(value) * 5).toString();
                 }
             }
             if (name)
-                this.$data.character[name] = value ?? "";
-                
+                this.character[name] = value ?? "";
+            this.$emit("characterChange", this.character)
+        },
+
+        setCharacterData() {
+            this.characterData && this.mapData(this.characterData);
+        },
+    },
+
+    mounted() {
+        this.setCharacterData();
+    },
+
+    props: {
+        characterData: Object,
+    },
+
+    watch: {
+        characterData: {
+            deep: true,
+            handler() {
+                this.setCharacterData();
+            },
         },
     },
 }
 </script>
-
-<style scoped>
-</style>

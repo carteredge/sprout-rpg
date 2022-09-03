@@ -47,12 +47,12 @@ export default {
     },
     data() {
         return {
-            agility: this.$props.character?.agility || "",
-            charm: this.$props.character?.charm || "",
-            focus: this.$props.character?.focus || "",
-            intellect: this.$props.character?.intellect || "",
-            might: this.$props.character?.might || "",
-            spirit: this.$props.character?.spirit || "",
+            agility: this.character?.agility || "",
+            charm: this.character?.charm || "",
+            focus: this.character?.focus || "",
+            intellect: this.character?.intellect || "",
+            might: this.character?.might || "",
+            spirit: this.character?.spirit || "",
         }
     },
     methods: {
@@ -62,9 +62,26 @@ export default {
             const value = event.target.value;
             this.$emit("input", name, value);
         },
+
+        setData() {
+            this.agility = this.character?.agility || "";
+            this.charm = this.character?.charm || "";
+            this.focus = this.character?.focus || "";
+            this.intellect = this.character?.intellect || "";
+            this.might = this.character?.might || "";
+            this.spirit = this.character?.spirit || "";
+        },
     },
     props: {
         character: Object,
+    },
+    watch: {
+        character: {
+            deep: true,
+            handler() {
+                this.setData();
+            },
+        },
     },
 }
 </script>

@@ -13,7 +13,8 @@
                     <input
                         class="text-field"
                         :id="`${getName(row, col)}`"
-                        :name="`${getName}`"
+                        :name="`${getName(row, col)}`"
+                        :value="dataValues[getIndex(row, col)]"
                         @input="onValueChange(getIndex(row, col), $event.target.value)"/>
                 </div>
             </div>
@@ -26,24 +27,29 @@ export default {
     name: "BoxOFields",
     computed: {
         columnsNumber() {
-            return Number(this.$props.columns) || 0;
+            return Number(this.columns) || 0;
         },
         rowsNumber() {
-            return Number(this.$props.rows) || 0;
+            return Number(this.rows) || 0;
         },
+    },
+    data() {
+        return { dataValues: this.values?.length ? [...this.values] : [] };
     },
     methods: {
         getIndex(row, column) {
-            return (column - 1) * Number(this.$props.rows) + row;
+            return (column - 1) * Number(this.rows) + row - 1;
         },
         getName(row, column) {
             const idx = this.getIndex(column, row);
-            return `${this.$props.name}-${idx}`;
+            return `${this.name}-${idx}`;
         },
         onValueChange(idx, value) {
-            const valuesCopy = [...this.values]
-            valuesCopy[idx] = value;
-            this.$emit("input", idx, value);
+            this.dataValues[idx] = value;
+            // const valuesCopy = [...this.dataValues]
+            // valuesCopy[idx] = value;
+            // // TODO: CODE HERE
+            this.$emit("input", { idx, value });
         }
     },
     props: {
@@ -53,9 +59,6 @@ export default {
             validator(value) {
                 return !isNaN(value);
             },
-        },
-        data() {
-            return { values: [] };
         },
         header: {
             default: "",
@@ -77,6 +80,14 @@ export default {
         },
         values: {
             type: Array,
+        },
+    },
+    watch: {
+        values: {
+            deep: true,
+            handler() {
+                this.dataValues = this.values ?? this.dataValues;
+            },
         },
     },
 }

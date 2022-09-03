@@ -27,24 +27,24 @@ export default {
     name: "DoubleField",
     computed: {
         firstFlexClass() {
-            return this.$props.firstFlex ?
-                `flex-${ this.$props.firstFlex }` :
+            return this.firstFlex ?
+                `flex-${ this.firstFlex }` :
                 "flex-1";
         },
         indentClass() {
-            return this.$props.indent ? `idt-${ this.$props.indent }` : "";
+            return this.indent ? `idt-${ this.indent }` : "";
         },
         secondFlexClass() {
-            return this.$props.secondFlex ?
-                `flex-${ this.$props.secondFlex }` :
+            return this.secondFlex ?
+                `flex-${ this.secondFlex }` :
                 "flex-4";
         },
     },
     data() {
         return {
             internal : {
-                firstValue: this.$props.firstValue ?? "",
-                secondValue: this.$props.secondValue ?? "",
+                firstValue: this.firstValue ?? "",
+                secondValue: this.secondValue ?? "",
             }
         };
     },
@@ -117,6 +117,14 @@ export default {
         secondValue: {
             type: String,
             default: "",
+        },
+    },
+    watch: {
+        firstValue() {
+            this.internal.firstValue = this.firstValue ?? "";
+        },
+        secondValue() {
+            this.internal.secondValue = this.secondValue ?? "";
         },
     },
 }

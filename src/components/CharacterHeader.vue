@@ -35,9 +35,9 @@ export default {
     },
     data() {
         return {
-            description: this.$props.character?.description || "",
-            level: this.$props.character?.level || "",
-            name: this.$props.character?.name || "",
+            description: this.character?.description || "",
+            level: this.character?.level || "",
+            name: this.character?.name || "",
         }
     },
     emits: [ "input" ],
@@ -46,12 +46,25 @@ export default {
             event.stopPropagation();
             const name = event.target.name;
             const value = event.target.value;
-            // this.$data[name] = value;
             this.$emit("input", name, value);
+        },
+
+        setData() {
+            this.description = this.character?.description || "";
+            this.level = this.character?.level || "";
+            this.name = this.character?.name || "";
         },
     },
     props: {
         character: Object,
+    },
+    watch: {
+        character: {
+            deep: true,
+            handler() {
+                this.setData();
+            },
+        },
     },
 }
 </script>
