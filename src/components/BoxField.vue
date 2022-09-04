@@ -10,7 +10,8 @@
             :id="name"
             :name="name"
             :placeholder="placeholder"
-            :value="value"/>
+            :value="internal.value"
+            @input.stop="$emit('input', $event)"/>
     </div>
 </template>
 
@@ -22,6 +23,13 @@ export default {
         indentClass() {
             return this.indent ? `idt-${ this.indent }` : "";
         }
+    },
+    data() {
+        return {
+            internal: {
+                value: this.value || "",
+            },
+        };
     },
     props: {
         bullet: String,
@@ -55,6 +63,11 @@ export default {
             default: "",
             type: String,
         },
+    },
+    watch: {
+        value() {
+            this.internal.value = this.value;
+        }
     },
 }
 </script>

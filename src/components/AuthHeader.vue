@@ -1,7 +1,16 @@
 <template>
     <div class="header-container">
         <header>
-            <a href="https://rpg.carteredge.dev/.auth/login/aad">Log In</a>
+            <a
+                href="/"
+                v-if="id">List</a>
+            <span v-else>&nbsp;</span>
+            
+            <a
+                href="#"
+                v-if="account.username" 
+                @click="logout">Log Out {{ account.username }}</a>
+            <a href="https://rpg.carteredge.dev/.auth/login/aad" v-else>Log In</a>
         </header>
     </div>
 </template>
@@ -24,6 +33,7 @@ export default {
             accessToken: {},
             account: {},
             api: "https://rpg.carteredge.dev/api/",
+            // api: "http://localhost:7071/api/"
             characterEndpoint: "characters/",
             characterData: {},
             id: urlParams.get("id") ?? "",
@@ -76,23 +86,47 @@ export default {
             } else {
                 await this.getAccessToken();
             }
-            if (this.id) {
-                if (!this.account) {
-                    await this.login();
-                    // .catch(this.logout);
-                }
+
+            if (!this.account) {
+                await this.login();
+                // .catch(this.logout);
+            }
+            
+            if (this.id && this.id !== "0") {
                 this.account && this.getCharacter();
+            } else {
+                this.account && this.getAllCharacters();
             }
         },
 
+        async getAllCharacters() {
+            if (!this.account ||
+                !this.api ||
+                !this.characterEndpoint)
+                return;
+            
+            const headers = new Headers();
+            const bearer = "Bearer " + this.accessToken;
+            headers.append("Authorization", bearer);
+            const options = {
+                method: "GET",
+                headers: headers
+            };
+            fetch(`${this.api}${this.characterEndpoint}`, options)
+                .then((response) => response.json())
+                .then(this.setCharacterData)
+                .catch(console.error);
+
+        },
+
         async getCharacter() {
-            if (
-                !this.account ||
+            if (!this.account ||
                 !this.api ||
                 !this.characterEndpoint ||
-                !this.id
-            )
+                !this.id ||
+                this.id === "0")
                 return;
+            
             const headers = new Headers();
             const bearer = "Bearer " + this.accessToken;
             headers.append("Authorization", bearer);
@@ -107,7 +141,6 @@ export default {
         },
 
         async login() {
-            debugger;
             await this.msalInstance
                 .loginPopup({ scopes: ["User.ReadWrite"] })
                 .then(() => {

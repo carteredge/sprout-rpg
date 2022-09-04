@@ -1,11 +1,8 @@
 <template>
-    <!--TODO: Replace action/method with JS call-->
     <form
+        action="javascript:$emit('formSubmit')"
         id="character-sheet"
-        ref="form"> <!--
-        action="https://rpg.carteredge.dev/api/characters/"
-        method="post">-->
-    <!-- <form id="character-sheet" action="http://localhost:7071/api/characters/" method="post"> -->
+        ref="form">
         <div class="page-container">
             <div class="page">
                 <input type="hidden" :value="id"/>
@@ -154,6 +151,7 @@ export default {
        },
 
         onArchetypeValueChange(archetypeIndex, name, event) {
+            console.log("onArchetypeValueChange", archetypeIndex, name, event?.name, event?.value);
             switch (name) {
                 case "archetype":
                     this.character

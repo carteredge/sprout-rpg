@@ -46,9 +46,6 @@ export default {
         },
         onValueChange(idx, value) {
             this.dataValues[idx] = value;
-            // const valuesCopy = [...this.dataValues]
-            // valuesCopy[idx] = value;
-            // // TODO: CODE HERE
             this.$emit("input", { idx, value });
         }
     },

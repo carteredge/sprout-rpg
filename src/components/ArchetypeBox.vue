@@ -3,7 +3,7 @@
         <box-field
             bullet="d8"
             input-class="strong tier-1"
-            :name="`archetype_${idx}`"
+            :name="`archetype-${idx}`"
             outer-class="w-50"
             placeholder="Archetype"
             :value="archetype.name"
@@ -131,17 +131,16 @@ export default {
         },
     },
     data() {
-        console.log(JSON.stringify(this.character.archetypes[this.idx]));
         return {
             archetype: this.character.archetypes[this.idx],
         };
     },
     methods: {
         onArchetypeValueChange(event) {
-            this.archetype.name = event.value;
-            this.$emit("input", "archetype", {
+            this.archetype.name = event.target.value ?? event.value;
+            this.$emit("input", this.index, "archetype", {
                 name: "name",
-                value: event.value,
+                value: event.target.value ?? event.value,
             });
         },
         
@@ -149,7 +148,7 @@ export default {
             this.archetype
                 .specializations[specializationIndex]
                 .signatures[signatureIndex][event.name] = event.value;
-            this.$emit("input", "signature", {
+            this.$emit("input", this.index, "signature", {
                 name: event.name,
                 signatureIndex,
                 specializationIndex,
@@ -159,11 +158,11 @@ export default {
         
         onSpecializationValueChange(specializationIndex, event) {
             this.archetype
-                .specializations[specializationIndex].name = event.value;
-            this.$emit("input", "signature", {
+                .specializations[specializationIndex].name = event.target.value ?? event.value;
+            this.$emit("input", this.index, "specialization", {
                 name: "name",
                 specializationIndex,
-                value: event.value,
+                value: event.target.value ?? event.value,
             });
         },
 
@@ -189,7 +188,6 @@ export default {
         "character.archetypes": {
             deep: true,
             handler() {
-                console.log("ArchetypeBox character watcher", this.idx, this.character.archetypes[this.idx], this.archetype[this.idx]);
                 this.setData();
             },
         },

@@ -8,8 +8,6 @@ import CharacterPage from "./components/CharacterPage.vue";
 export default {
     name: "App",
     components: {
-        // CharacterCardPage,
-        // CharacterList,
         CharacterPage,
     }
 }
