@@ -2,7 +2,7 @@
     <div class="header-container">
         <header>
             <a
-                href="/"
+                :href="window.location.hostname === 'localhost' ? '/' : '/sprout-rpg/'"
                 v-if="id">List</a>
             <span v-else>&nbsp;</span>
             

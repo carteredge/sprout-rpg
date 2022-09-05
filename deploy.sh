@@ -16,11 +16,7 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:carteredge/sprout-rpg.git dist:gh-pages
-
-git show-ref
-
-read -p "Press enter to continue"
+git push -f git@github.com:carteredge/sprout-rpg.git main:gh-pages
 
 cd -
 
