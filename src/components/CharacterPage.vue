@@ -16,7 +16,7 @@
             @form-submit="onFormSubmit"/>
         <character-list
             v-else
-            :characters="characterData"/>
+            :characters="characterListData"/>
         <footer>
             <input
                 v-if="id && !saving"
@@ -57,6 +57,7 @@ export default {
         return {
             accessToken: "",
             characterData: {},
+            characterListData: [],
             id: urlParams.get("id") ?? "",
             loaded: false,
             saveButtonLabel: "Save",
@@ -69,14 +70,16 @@ export default {
         },
 
         onDataChanged(event) {
-            console.log(event);
             this.characterData = event;
             this.resetSaveButton();
         },
 
         onDataReceived(event) {
             this.loaded = true;
-            this.characterData = event;
+            if (Array.isArray(event))
+                this.characterListData = event;
+            else
+                this.characterData = event;
         },
 
         onFormSubmit() {

@@ -151,7 +151,6 @@ export default {
        },
 
         onArchetypeValueChange(archetypeIndex, name, event) {
-            console.log("onArchetypeValueChange", archetypeIndex, name, event?.name, event?.value);
             switch (name) {
                 case "archetype":
                     this.character

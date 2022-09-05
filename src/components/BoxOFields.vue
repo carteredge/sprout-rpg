@@ -41,7 +41,7 @@ export default {
             return (column - 1) * Number(this.rows) + row - 1;
         },
         getName(row, column) {
-            const idx = this.getIndex(column, row);
+            const idx = this.getIndex(row, column);
             return `${this.name}-${idx}`;
         },
         onValueChange(idx, value) {
