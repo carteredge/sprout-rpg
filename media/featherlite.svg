@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="26.803013mm"
+   height="20.00033mm"
+   viewBox="0 0 26.803013 20.00033"
+   version="1.1"
+   id="svg7969"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="featherlite.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7971"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-smooth-nodes="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="6.2217172"
+     inkscape:cx="-0.080363666"
+     inkscape:cy="27.082555"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs7966" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-23.786145,-29.208552)">
+    <path
+       id="path8052"
+       style="fill:#998877;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       d="m 89.900391,110.39453 17.999999,11.25195 h 35.2793 a 37.795276,37.795276 0 0 0 -2.78125,3.11719 l -42.919924,6.03125 19.390624,8.63672 17.07031,-2.39844 a 37.795276,37.795276 0 0 0 -1.48828,7.51953 l -26.49023,7.59571 20.40429,5.85351 6.73633,-1.93164 a 37.795276,37.795276 0 0 0 2.70117,8.07227 l -20.46484,9.11133 21.01953,2.95703 5.76758,-2.56836 a 37.795276,37.795276 0 0 0 27.92383,12.34375 37.795276,37.795276 0 0 0 21.11133,-6.47071 33.259843,33.259843 0 0 1 -11.11133,1.93555 33.259843,33.259843 0 0 1 -33.25977,-33.25976 33.259843,33.259843 0 0 1 33.25977,-33.25977 33.259843,33.259843 0 0 1 11.15429,1.93945 37.795276,37.795276 0 0 0 -21.15429,-6.47656 z"
+       transform="scale(0.26458333)" />
+  </g>
+</svg>

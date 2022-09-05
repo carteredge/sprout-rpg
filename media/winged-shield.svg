@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 128 128"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="winged-shield.svg"
+   width="128"
+   height="128"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     width="128px"
+     inkscape:zoom="4.7226562"
+     inkscape:cx="133.50538"
+     inkscape:cy="60.241523"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     id="g878">
+    <path
+       d="m 32.878876,8.0585138 c -7.46325,7.3545002 -9.39075,18.0182502 -5.88325,27.0475002 -9.1225,-5.09575 -16.1325,-13.87175 -18.6559999,-24.72675 -6.07,18.473 2.5909999,37.8885 19.3514999,45.953 -8.0945,2.24125 -16.8935,-0.535 -23.2107499,-8.2575 3.30675,16.0225 15.4737499,25.82625 27.9607499,23.47625 -1.74375,7.72075 -7.6875,12.3325 -15.508,11.1095 8.58075,6.84425 17.8265,6.75 22.78925,0.60925 3.114,5.58075 6.8115,11.051 11.09375,16.3595 l -5.78125,3.015496 c 4.24,6.73875 10.655,13.25875 18.97675,19.28125 7.9475,-5.77325 13.854,-12.113 18.10925,-18.57 l -5.7025,-2.96125 c 4.5655,-5.572496 8.49075,-11.328246 11.781,-17.210996 4.945,6.228 14.246004,6.354 22.867504,-0.523 -7.821,1.2225 -13.772504,-3.3885 -15.516004,-11.1095 12.490004,2.3555 24.661004,-7.45 27.968754,-23.4765 -6.3175,7.7225 -15.11625,10.499 -23.211,8.2575 16.761,-8.06425 25.422,-27.48 19.352,-45.9525 -2.52425,10.857 -9.53825,19.63125 -18.66425,24.72625 3.50875,-9.03 1.589,-19.693 -5.875004,-27.0475002 3.18575,12.6382502 -3.8025,25.6850002 -15.9605,30.0862502 -9.82675,0.74625 -20.4385,0.7595 -30.26575,0.0235 -12.1925,-4.38175 -19.206,-17.4525 -16.01575,-30.1100002 z m 63.039,32.6487502 c -0.99075,23.065 -11.6655,46.18425 -31.977,66.444996 -20.41625,-20.294996 -30.89625,-43.380496 -31.85925,-66.437496 18.895,3.637 44.954,3.5915 63.836,-0.0075 z"
+       fill="#ffffff"
+       fill-opacity="1"
+       stroke="#000000"
+       stroke-opacity="1"
+       stroke-width="2"
+       id="path2"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round" />
+  </g>
+</svg>
