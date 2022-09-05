@@ -2,7 +2,7 @@
     <div class="header-container">
         <header>
             <a
-                :href="window.location.hostname === 'localhost' ? '/' : '/sprout-rpg/'"
+                :href="getListURL"
                 v-if="id">List</a>
             <span v-else>&nbsp;</span>
             
@@ -138,6 +138,10 @@ export default {
                 .then((response) => response.json())
                 .then(this.setCharacterData)
                 .catch(console.error);
+        },
+
+        getListURL() {
+            return window.location.hostname === 'localhost' ? '/' : '/sprout-rpg/';
         },
 
         async login() {
