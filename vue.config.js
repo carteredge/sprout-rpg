@@ -2,5 +2,5 @@ module.exports = {
     css: {
         extract: false
     },
-    publicPath: process.env.NODE_ENV === "production" ? "/featherlite/" : "/",
+    publicPath: process.env.NODE_ENV === "production" ? "/sprout-rpg/" : "/",
 }
